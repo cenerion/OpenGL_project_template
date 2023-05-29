@@ -1,4 +1,4 @@
-#include <glad/glad.h>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include <iostream>
@@ -59,13 +59,16 @@ int main()
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // glad: load all OpenGL function pointers
+    // Init glew
     // ---------------------------------------
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    GLenum err = glewInit();
+    if (GLEW_OK != err)
     {
-        std::cout << "Failed to initialize GLAD" << std::endl;
+        std::cout << "Failed to initialize GLEW; Error: " << glewGetErrorString(err) << std::endl;
+        glfwTerminate();
         return -1;
     }
+    std::cout << "Status: Using GLEW " << glewGetString(GLEW_VERSION) << std::endl;
 
 
     // build and compile our shader program

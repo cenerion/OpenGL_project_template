@@ -1,6 +1,8 @@
-[submodule "deps/glfw"]
+[submodule "glfw"]
 	path = deps/glfw
 	url = https://github.com/glfw/glfw.git
-[submodule "deps/glew"]
+	branch = 3.3-stable
+[submodule "glew"]
 	path = deps/glew
-	url = https://github.com/nigels-com/glew.git
+	url = https://github.com/Perlmint/glew-cmake.git
+	branch = glew-cmake-release
